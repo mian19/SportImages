@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    private let sectionsDict = ["Футбол": "Football", "Хоккей": "Ice Hockey", "Баскетбол": "Basketball", "Теннис": "tennis"]
+    private let sectionsDict = ["Футбол": "Football", "Хоккей": "Ice Hockey Wallpaper", "Баскетбол": "Basketball", "Теннис": "tennis"]
     private var sectionHeight: CGFloat = 300
     private var contentSize: CGSize {
         let height: CGFloat = CGFloat(sectionsDict.count) * sectionHeight + CGFloat(sectionsDict.count * 25)
@@ -82,7 +82,9 @@ class MainViewController: UIViewController {
             let sectionView = SectionView()
             sectionView.sectionsCollection.indexInStack = index
             sectionView.sectionName.text = item
- //           sectionView.sectionsCollection.fetchDataFromServer(searchText: sectionsDict[item]!)
+            sectionView.moreButton.tag = index
+            sectionView.moreButton.addTarget(self, action: #selector(onMoreButton), for: .touchUpInside)
+            sectionView.sectionsCollection.fetchDataFromServer(searchText: sectionsDict[item]!)
             stackView.addArrangedSubview(sectionView)
 
         }
@@ -106,8 +108,17 @@ class MainViewController: UIViewController {
         }
     }
     
+    //MARK: - Actions
     @objc private func onBurgerButton() {
         print("burger")
+    }
+    
+    @objc private func onMoreButton(_ sender: UIButton) {
+        print(sender.tag)
+        let viewController = MoreImagesViewController()
+        viewController.sectionName = sectionsDict.keys.sorted(by: <)[sender.tag]
+        viewController.searchWord = sectionsDict[viewController.sectionName]
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
 }

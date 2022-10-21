@@ -8,14 +8,13 @@
 import UIKit
 
 class SectionCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
-    weak var vcDelegate: MainViewController!
+    
+    //weak var vcDelegate: MainViewController!
     var networkDataFetcher = NetworkDataFetcher()
     var indexInStack: Int!
     var photos: [UnsplashPhoto]?
     var cellWidth: CGFloat  = 120
-    var cellHeight: CGFloat {
-        return (cellWidth * 2.1) }
+    var cellHeight: CGFloat { return (cellWidth * 2.1) }
     
     init() {
         let layout = UICollectionViewFlowLayout()
@@ -54,8 +53,8 @@ class SectionCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
         
     }
     
-    func fetchDataFromServer(searchText: String) {
-        self.networkDataFetcher.fetchImages(searchTerm: searchText) { [weak self] searchResults in
+    func fetchDataFromServer(searchText: String, pageNumber: Int = 1) {
+        self.networkDataFetcher.fetchImages(searchTerm: searchText, pageNumber: pageNumber) { [weak self] searchResults in
             guard let fetchedPhotos = searchResults else { return}
             self?.photos = fetchedPhotos.results
             self?.reloadData()
