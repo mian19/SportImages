@@ -9,7 +9,7 @@ import UIKit
 
 class MoreCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    
+    weak var vcDelegate: MoreImagesViewController!
     private var pageNumber = 2
     private var isFetchingMore = false
     private var cellWidth = (UIScreen.main.bounds.width - 60) / 2
@@ -55,6 +55,11 @@ class MoreCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         return sectionInserts
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let photo = photos?[indexPath.row] else { return }
+        vcDelegate.openFullImage(photo: photo)
+    }
+    
     func fetchDataFromServer(searchText: String, pageNumber: Int) {
         
         self.networkDataFetcher.fetchImages(searchTerm: searchText, pageNumber: pageNumber) { [weak self] searchResults in
@@ -81,8 +86,6 @@ class MoreCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
                 })
             }
             isFetchingMore = true
-            
         }
-        
     }
 }

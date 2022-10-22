@@ -34,6 +34,7 @@ class MoreImagesViewController: UIViewController {
     
     private func setMoreCollectionView() {
         moreImagesCollection = MoreCollectionView()
+        moreImagesCollection.vcDelegate = self
         moreImagesCollection.searchWord = searchWord
         moreImagesCollection.fetchDataFromServer(searchText: searchWord, pageNumber: 2)
         view.addSubview(moreImagesCollection)
@@ -42,6 +43,13 @@ class MoreImagesViewController: UIViewController {
         moreImagesCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         moreImagesCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         moreImagesCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+    
+    //MARK: - Actions
+    func openFullImage(photo: UnsplashPhoto) {
+        let fullVC = FullImageViewController()
+         fullVC.unsplashPhoto = photo
+         navigationController?.pushViewController(fullVC, animated: true)
     }
  
 }

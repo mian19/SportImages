@@ -9,7 +9,7 @@ import UIKit
 
 class SectionCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    //weak var vcDelegate: MainViewController!
+    weak var vcDelegate: MainViewController!
     var networkDataFetcher = NetworkDataFetcher()
     var indexInStack: Int!
     var photos: [UnsplashPhoto]?
@@ -36,7 +36,6 @@ class SectionCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: "sportImage", for: indexPath) as! SectionCollectionViewCell
         guard let image = photos?[indexPath.item] else { return cell}
-        cell.backgroundColor = .gray
         cell.unsplashPhoto = image
         return cell
     }
@@ -50,7 +49,8 @@ class SectionCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        guard let photo = photos?[indexPath.row] else { return }
+        vcDelegate.openFullImage(photo: photo)
     }
     
     func fetchDataFromServer(searchText: String, pageNumber: Int = 1) {

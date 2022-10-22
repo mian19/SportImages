@@ -45,11 +45,12 @@ class SectionView: UIView {
         moreButton.translatesAutoresizingMaskIntoConstraints = false
         moreButton.setTitleColor(.systemBlue, for: .normal)
         moreButton.titleLabel?.font =  UIFont.boldSystemFont(ofSize: 20)
+        moreButton.setTitle("Больше →", for: .normal)
         addSubview(moreButton)
         trailingAnchor.constraint(equalTo: moreButton.trailingAnchor, constant: 10).isActive = true
         moreButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         moreButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        moreButton.setTitle("Больше →", for: .normal)
+        moreButton.centerYAnchor.constraint(equalTo: sectionName.centerYAnchor).isActive = true
     }
     
     private func setArticlesCollectionView() {

@@ -81,12 +81,12 @@ class MainViewController: UIViewController {
         for (index, item) in sectionsDict.keys.sorted(by: <).enumerated() {
             let sectionView = SectionView()
             sectionView.sectionsCollection.indexInStack = index
+            sectionView.sectionsCollection.vcDelegate = self
             sectionView.sectionName.text = item
             sectionView.moreButton.tag = index
             sectionView.moreButton.addTarget(self, action: #selector(onMoreButton), for: .touchUpInside)
             sectionView.sectionsCollection.fetchDataFromServer(searchText: sectionsDict[item]!)
             stackView.addArrangedSubview(sectionView)
-
         }
     }
     
@@ -119,6 +119,12 @@ class MainViewController: UIViewController {
         viewController.sectionName = sectionsDict.keys.sorted(by: <)[sender.tag]
         viewController.searchWord = sectionsDict[viewController.sectionName]
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func openFullImage(photo: UnsplashPhoto) {
+        let fullVC = FullImageViewController()
+         fullVC.unsplashPhoto = photo
+         navigationController?.pushViewController(fullVC, animated: true)
     }
 
 }
