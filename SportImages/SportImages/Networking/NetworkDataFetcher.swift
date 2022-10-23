@@ -34,6 +34,5 @@ class NetworkDataFetcher {
             print(error.localizedDescription)
             return nil
         }
-        
     }
 }

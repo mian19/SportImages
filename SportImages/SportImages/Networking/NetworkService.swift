@@ -12,7 +12,6 @@ class NetworkService {
     func request(searchTerm: String, pageNumber: Int, completion: @escaping (Data?, Error?) -> Void ) {
         let parameters = self.prepareParameters(searchTerm: searchTerm, pageNumber: pageNumber)
         let url = self.url(params: parameters)
-        print(url)
         
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = prepareHeader()

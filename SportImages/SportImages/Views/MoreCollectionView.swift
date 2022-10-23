@@ -10,7 +10,7 @@ import UIKit
 class MoreCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     weak var vcDelegate: MoreImagesViewController!
-    private var pageNumber = 2
+    private var pageNumber = 3
     private var isFetchingMore = false
     private var cellWidth = (UIScreen.main.bounds.width - 60) / 2
     private var cellHeight: CGFloat { return (cellWidth * 2.1) }
@@ -24,6 +24,7 @@ class MoreCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 20
         super.init(frame: .zero, collectionViewLayout: layout)
+        backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         showsHorizontalScrollIndicator = false
         register(SectionCollectionViewCell.self, forCellWithReuseIdentifier: "sportImage")
@@ -61,7 +62,6 @@ class MoreCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     }
     
     func fetchDataFromServer(searchText: String, pageNumber: Int) {
-        
         self.networkDataFetcher.fetchImages(searchTerm: searchText, pageNumber: pageNumber) { [weak self] searchResults in
             guard let fetchedPhotos = searchResults else { return}
             if pageNumber != 2 {
@@ -73,19 +73,15 @@ class MoreCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        if offset > contentHeight - scrollView.frame.height {
-            if isFetchingMore {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
-                    if self?.pageNumber == 2 {
-                        self?.pageNumber = 3
-                        self?.fetchDataFromServer(searchText: self?.searchWord ?? "", pageNumber: self?.pageNumber ?? 3)
-                    }
-                })
-            }
-            isFetchingMore = true
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+        guard let photosCount = photos?.count else { return }
+        if indexPath.row == photosCount - 1 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+                self?.fetchDataFromServer(searchText: self?.searchWord ?? "", pageNumber: self!.pageNumber)
+            })
+            pageNumber += 1
         }
     }
+    
 }

@@ -21,6 +21,8 @@
 		67603D7B2901A56B00F7AB88 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67603D7A2901A56B00F7AB88 /* NetworkService.swift */; };
 		67656F312903EBE600399FE1 /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67656F302903EBE600399FE1 /* FullImageViewController.swift */; };
 		67656F342904660600399FE1 /* UIButton+CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67656F332904660600399FE1 /* UIButton+CustomButton.swift */; };
+		679E3D48290598D500F6B276 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679E3D47290598D500F6B276 /* MainTabBarController.swift */; };
+		679E3D4A2905B09100F6B276 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679E3D492905B09100F6B276 /* SettingsViewController.swift */; };
 		67A9E5752902944B005C49C9 /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A9E5742902944B005C49C9 /* SectionView.swift */; };
 		67A9E5772902DDA6005C49C9 /* MoreImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A9E5762902DDA6005C49C9 /* MoreImagesViewController.swift */; };
 		67A9E57A29031DEE005C49C9 /* MoreCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A9E57929031DEE005C49C9 /* MoreCollectionView.swift */; };
@@ -43,6 +45,8 @@
 		67603D7A2901A56B00F7AB88 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		67656F302903EBE600399FE1 /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageViewController.swift; sourceTree = "<group>"; };
 		67656F332904660600399FE1 /* UIButton+CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+CustomButton.swift"; sourceTree = "<group>"; };
+		679E3D47290598D500F6B276 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		679E3D492905B09100F6B276 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		67A9E5742902944B005C49C9 /* SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		67A9E5762902DDA6005C49C9 /* MoreImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreImagesViewController.swift; sourceTree = "<group>"; };
 		67A9E57929031DEE005C49C9 /* MoreCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCollectionView.swift; sourceTree = "<group>"; };
@@ -86,7 +90,7 @@
 				67656F32290465E000399FE1 /* Extensions */,
 				67603D742901A06C00F7AB88 /* Models */,
 				67603D772901A55800F7AB88 /* Networking */,
-				67A9E5782902E023005C49C9 /* Screens */,
+				67A9E5782902E023005C49C9 /* Controllers */,
 				67603D6F29019DCD00F7AB88 /* Views */,
 				67603D5B29018E7700F7AB88 /* AppDelegate.swift */,
 				67603D5D29018E7700F7AB88 /* SceneDelegate.swift */,
@@ -134,14 +138,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		67A9E5782902E023005C49C9 /* Screens */ = {
+		67A9E5782902E023005C49C9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				679E3D47290598D500F6B276 /* MainTabBarController.swift */,
 				67A9E5762902DDA6005C49C9 /* MoreImagesViewController.swift */,
 				67603D5F29018E7700F7AB88 /* MainViewController.swift */,
 				67656F302903EBE600399FE1 /* FullImageViewController.swift */,
+				679E3D492905B09100F6B276 /* SettingsViewController.swift */,
 			);
-			path = Screens;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		6A03463DE56B7D05F75AFA6A /* Frameworks */ = {
@@ -284,8 +290,10 @@
 				67603D7B2901A56B00F7AB88 /* NetworkService.swift in Sources */,
 				67656F312903EBE600399FE1 /* FullImageViewController.swift in Sources */,
 				67603D7329019E1700F7AB88 /* SectionCollectionViewCell.swift in Sources */,
+				679E3D4A2905B09100F6B276 /* SettingsViewController.swift in Sources */,
 				67603D5C29018E7700F7AB88 /* AppDelegate.swift in Sources */,
 				67603D7129019E0100F7AB88 /* SectionCollectionView.swift in Sources */,
+				679E3D48290598D500F6B276 /* MainTabBarController.swift in Sources */,
 				67603D762901A07600F7AB88 /* SearchResults.swift in Sources */,
 				67A9E5772902DDA6005C49C9 /* MoreImagesViewController.swift in Sources */,
 				67603D5E29018E7700F7AB88 /* SceneDelegate.swift in Sources */,

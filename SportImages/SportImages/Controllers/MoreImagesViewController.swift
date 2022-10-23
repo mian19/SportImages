@@ -21,7 +21,6 @@ class MoreImagesViewController: UIViewController {
       
         setupNavigationBar(text: sectionName)
         setMoreCollectionView()
-   
     }
 
     private func setupNavigationBar(text: String) {

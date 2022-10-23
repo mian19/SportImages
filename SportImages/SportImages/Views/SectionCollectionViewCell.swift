@@ -44,7 +44,6 @@ class SectionCollectionViewCell: UICollectionViewCell {
         photoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         photoImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         photoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
     }
     
     required init?(coder: NSCoder) {

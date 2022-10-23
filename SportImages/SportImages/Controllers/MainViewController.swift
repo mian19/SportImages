@@ -38,11 +38,11 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var burgerBarButtonItem: UIBarButtonItem = {
-        var button = UIBarButtonItem(image: UIImage(systemName: "text.justifyleft"), style: .plain, target: self, action: #selector(onBurgerButton))
-        button.tintColor = .black
-        return button
-    }()
+//    private lazy var burgerBarButtonItem: UIBarButtonItem = {
+//        var button = UIBarButtonItem(image: UIImage(systemName: "text.justifyleft"), style: .plain, target: self, action: #selector(onBurgerButton))
+//        button.tintColor = .black
+//        return button
+//    }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -66,15 +66,15 @@ class MainViewController: UIViewController {
     }
     
     private func setView() {
-     
         view.addSubview(scrollView)
+        view.backgroundColor = .white
         scrollView.addSubview(contentView)
         contentView.addSubview(stackView)
     }
 
     private func setBarButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
-        navigationItem.rightBarButtonItem = burgerBarButtonItem
+    //    navigationItem.rightBarButtonItem = burgerBarButtonItem
     }
     
     private func setCategoryCollection() {
@@ -95,7 +95,7 @@ class MainViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             contentView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 10)
         ])
@@ -114,7 +114,6 @@ class MainViewController: UIViewController {
     }
     
     @objc private func onMoreButton(_ sender: UIButton) {
-        print(sender.tag)
         let viewController = MoreImagesViewController()
         viewController.sectionName = sectionsDict.keys.sorted(by: <)[sender.tag]
         viewController.searchWord = sectionsDict[viewController.sectionName]

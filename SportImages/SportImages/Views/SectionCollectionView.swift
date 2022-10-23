@@ -23,7 +23,7 @@ class SectionCollectionView: UICollectionView, UICollectionViewDelegate, UIColle
         super.init(frame: .zero, collectionViewLayout: layout)
         translatesAutoresizingMaskIntoConstraints = false
         showsHorizontalScrollIndicator = false
-        backgroundColor = .clear
+        backgroundColor = .white
         register(SectionCollectionViewCell.self, forCellWithReuseIdentifier: "sportImage")
         delegate = self
         dataSource = self
