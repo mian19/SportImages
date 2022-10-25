@@ -34,6 +34,8 @@ class FullImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.backgroundColor = .clear
+        self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.setHidesBackButton(true, animated: true)
         setPhotoImageView()
         setButtons()
@@ -83,11 +85,13 @@ class FullImageViewController: UIViewController {
     
     @objc private func onHome() {
         navigationController?.popToRootViewController(animated: true)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     @objc private func onCross() {
         if navigationController?.viewControllers.count == 3 {
             navigationController?.popViewController(animated: true)
+            self.tabBarController?.tabBar.isHidden = false
         } else {
             onHome()
         }

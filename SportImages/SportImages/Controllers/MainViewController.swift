@@ -38,12 +38,6 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
-//    private lazy var burgerBarButtonItem: UIBarButtonItem = {
-//        var button = UIBarButtonItem(image: UIImage(systemName: "text.justifyleft"), style: .plain, target: self, action: #selector(onBurgerButton))
-//        button.tintColor = .black
-//        return button
-//    }()
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Галерея"
@@ -65,6 +59,11 @@ class MainViewController: UIViewController {
         setConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UINavigationBar.appearance().backgroundColor = .white
+    }
+    
     private func setView() {
         view.addSubview(scrollView)
         view.backgroundColor = .white
@@ -74,7 +73,6 @@ class MainViewController: UIViewController {
 
     private func setBarButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: titleLabel)
-    //    navigationItem.rightBarButtonItem = burgerBarButtonItem
     }
     
     private func setCategoryCollection() {

@@ -11,7 +11,6 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         UITabBar.appearance().backgroundColor = .white
         let mainVC = MainViewController()
         let navigationVC = generateNavigationController(rootVC: mainVC, image: UIImage(systemName: "house.fill")!)

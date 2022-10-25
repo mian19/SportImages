@@ -74,7 +74,6 @@ class MoreCollectionView: UICollectionView, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         guard let photosCount = photos?.count else { return }
         if indexPath.row == photosCount - 1 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
